@@ -5,7 +5,7 @@ from .models import Product
 from math import ceil
 from datetime import datetime
 from Shop.models import Contact, Orders, OrderUpdate
-from django.contrib import messages
+
 import json
 
 # Create your views here.
@@ -55,14 +55,13 @@ def tracker(request):
                 updates = []
                 for item in update:
                     updates.append({'text': item.update_desc, 'time': item.timestamp})
-                    response = json.dumps(updates, default=str)
+                    response = json.dumps({"status":"success", "updates":updates, "itemsJson": order[0].items_Json}, default=str)
                 return HttpResponse(response)
             else:
-                return HttpResponse('error')
+                return HttpResponse('{"status":"noitem"}')
         except Exception as e:
-            return HttpResponse('error')
-
-    return render(request, 'shop/tracker.html')
+            return HttpResponse('{"status":"error"}')
+    return render(request, 'Shop/tracker.html')
     
 def search (request):
     return render(request, 'Shop/search.html')
@@ -75,7 +74,7 @@ def productView(request, myid):
 
 def checkout (request):
     if request.method == "POST":
-        items_json = request.POST.get('itemsjson', '')
+        items_Json = request.POST.get('itemsJson', '')
         name = request.POST.get('name', '')
         email = request.POST.get('email', '')
         city = request.POST.get('city', '')
@@ -84,7 +83,7 @@ def checkout (request):
         phone = request.POST.get('phone', '')
         state = request.POST.get('state', '')
 
-        order= Orders(items_Json=items_json, name=name, email=email, city=city, address=address, state=state, phone=phone, zip_code=zip_code)
+        order= Orders(items_Json=items_Json, name=name, email=email, city=city, address=address, state=state, phone=phone, zip_code=zip_code)
         order.save()
         update = OrderUpdate(order_id= order.order_id, update_desc="The Order has been placed")
         update.save()
