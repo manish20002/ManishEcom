@@ -1,4 +1,16 @@
 # ManishE-com
-Demo Website using Django
+Demo Ecommer Website using Django
 
-$ create contact UI 
+# Contant
+$ Shoping Cart
+
+$ Contact Form with gmail intergation 
+
+$ MySql DataBase
+
+$ Payment Gateway (PAYTM)
+
+# FollowMe
+Ig:- https://instagram.com/manish_heroisgreat_20
+
+IgPage:- https://instagram.com/ethical_hacking_python
