@@ -29,7 +29,8 @@ class Product(models.Model):
 
 class Orders(models.Model):
     order_id = models.AutoField(primary_key=True)
-    items_Json = models.CharField(max_length=500)
+    items_json = models.CharField(max_length=500)
+    amount = models.IntegerField(default=0)
     name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
     address = models.CharField(max_length=50)
