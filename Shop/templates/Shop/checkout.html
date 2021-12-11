@@ -1,7 +1,7 @@
 {% extends 'Shop/basic.html' %} {% block title %}CheckOut{% endblock %} {% block body %}
 <div class="container">
     <div class="col my-4">
-        <h2>Step 1 - My Awesome Cart Express Checkout - Review Your Cart Items</h2>
+        <h2>Step 1 - ManishE-com - Review Your Cart Items</h2>
         <div class="my-4">
             <ul class="list-group" id="items">
             </ul>
@@ -19,7 +19,8 @@
     </div>
     <div class="col my-4">
         <h2>Step 2 - Enter Address & Other Details:</h2>
-        <form method="post" action="/Shop/checkout/">{% csrf_token %}
+        <form method="post" action="/Shop/checkout/">
+            {% csrf_token %}
             <input type="hidden" name="itemsJson" id="itemsJson">
             <input type="hidden" name="amount" id="amount">
             <div class="form-row">
@@ -74,7 +75,6 @@ if (localStorage.getItem('cart') == null) {
 console.log(cart);
 var sum = 0;
 var totalPrice = 0;
-
 if ($.isEmptyObject(cart)) {
     //if object is empty
     mystr = `<p>Your cart is empty, please add some items to your cart before checking out!</p>`
