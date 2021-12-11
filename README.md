@@ -1,5 +1,11 @@
 # ManishE-com
 Demo Ecommer Website using Django
+# Commands
+### `python manage.py makemigrations`
+
+### `python manage.py migrate`
+
+### `python manage.py runserver`
 
 # Contant
 $ Shoping Cart
