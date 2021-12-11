@@ -11,8 +11,8 @@ margin-right: auto;
 background-color: blue;
 }
 .col-md-3 img{
-width: 150px;
-height: 180px;
+width: 420px;
+height: 260px;
 }
 body .carousel-indicator li{
 background-color: blue;
@@ -63,15 +63,16 @@ h1 {
                 <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>
                 {% endfor %}
             </ul>
-            <div class="container carousel-inner no-padding">
+            <div  class="text-gray-600 body-font">
                 <div class="carousel-item active">
                     {% for i in product %}
                     <div class="col-xs-3 col-sm-3 col-md-3">
                         <div class="card align-items-center" style="width: 20rem;">
                             <img src='/media/{{i.image}}' class="card-img-top" alt="...">
+                            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{product.0.category}}</h3>
                             <div class="card-body">
-                                <h5 class="card-title-primary" id="namepr{{i.id}}">{{i.Product_name}}</h5>
-                                 <h6 class="card-title" >Price : <span id="pricepr{{i.id}}">{{i.price}}</span></h6>
+                                <h2 class="text-gray-900 title-font text-lg font-medium" id="namepr{{i.id}}">{{i.Product_name}}</h2>
+                                <h6 class="card-title" >Price : <span id="pricepr{{i.id}}">{{i.price}}</span></h6>
                                 <p class="card-text">{{i.desc|slice:"0:53"}}...</p>
                                 <span id="divpr{{i.id}}" class="divpr">
                                     <button id="pr{{i.id}}" class="btn btn-primary cart">Add To Cart</button>
@@ -123,7 +124,6 @@ if (localStorage.getItem('cart') == null) {
 
     }
     updateCart(cart);
-
 });
 
 //Add Popover to cart
