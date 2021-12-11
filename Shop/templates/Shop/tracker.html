@@ -1,5 +1,5 @@
 {% extends 'Shop/basic.html' %}
-{% block title%} My Awesome Cart Tracker{% endblock %}
+{% block title%} ManishE-com{% endblock %}
 {% block body %}
 <div class="container">
     <div class="col my-4">
@@ -54,7 +54,6 @@ $('#trackerForm').submit(function(event) {
             $('#citems').empty();
             console.log(data)
             data = JSON.parse(data);
-            updates = data['updates'];
             if (data['status'] == 'success') {
                 updates = data['updates'];
                 for (i = 0; i < updates.length; i++) {
@@ -67,6 +66,7 @@ $('#trackerForm').submit(function(event) {
                     $('#items').append(mystr);
                 }
                 // Fill in the order details 
+                
                 cart = JSON.parse(data['itemsJson']);
                 console.log(cart);
                 for (items in cart) {
