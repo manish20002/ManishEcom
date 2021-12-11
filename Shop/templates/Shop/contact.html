@@ -2,89 +2,56 @@
 {% block title %}Contact Us{% endblock %}
 {% block body %}
 
-<style>
-* {
-  box-sizing: border-box;
-}
 
-/* Style inputs */
-input[type=text], select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  margin-top: 6px;
-  margin-bottom: 16px;
-  resize: vertical;
-}
-
-input[type=submit] {
-  background-color: #04AA6D;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-/* Style the container/contact section */
-.container {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 10px;
-}
-
-/* Create two columns that float next to eachother */
-.column {
-  float: left;
-  width: 50%;
-  margin-top: 6px;
-  padding: 20px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column, input[type=submit] {
-    width: 100%;
-    margin-top: 0;
-  }
-  img {
-      max-width: 100%;
-      height: auto;
-  }
-}
-</style>
-
+<script src="https://cdn.tailwindcss.com"></script>
 <div class="container">
-  <div style="text-align:center">
-    <h2>Contact Us</h2>
-    <p>We are here to help you out</p>
-  </div>
   <div class="row">
-    <div class="column">
-      <img src="https://cdn.dribbble.com/users/753420/screenshots/5299288/attachments/1149383/img_0615.png?" style="width:100%">
-    </div>
     <div class="column">
       <form action="/Shop/contact/" method="POST">
       {% csrf_token %}
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Your name..">
-        <label for="email">Email id</label>
-        <input type="text" class="form-control" id="email" name="email" placeholder="example@msil.com...">
-        <label for="subject">Subject</label>
-        <input type="text" class="form-control" name="subject">
-        <label for="desc">Tell Us</label>
-        <textarea class="form-control" id="desc" name="desc" placeholder="Write Your Problem.." style="height:50px"></textarea>
-        <button type="submit" class="btn btn-primary">Submit</button>
+      <section class="text-gray-600 body-font relative">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-12">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Us</h1>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify.</p>
+          </div>
+          <div class="lg:w-1/2 md:w-2/3 mx-auto">
+            <div class="flex flex-wrap -m-2">
+              <div class="p-2 w-1/2">
+                <div class="relative">
+                  <label for="name" class="leading-7 text-sm text-gray-600">Name</label>
+                  <input type="text" placeholder="Your name.." class="form-control" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+              </div>
+              <div class="p-2 w-1/2">
+                <div class="relative">
+                  <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
+                  <input type="email" placeholder="example@gmail.com..." class="form-control" id="email" name="email" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+              </div>
+              <div class="p-2 w-full">
+                <label for="subject" class="leading-7 text-sm text-gray-600">Subject</label>
+                <input type="text" class="form-control" id="subject" name="subject" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200  text-base outline-none text-gray-700 py-1 px-3 resize-none leading-8 transition-colors duration-200 ease-in-out"></textarea>
+              </div>
+              <div class="p-2 w-full">
+                <div class="relative">
+                  <label for="message" class="leading-7 text-sm text-gray-600">Message</label>
+                  <textarea id="desc" placeholder="Write Your Problem.." class="form-control" name="desc" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                </div>
+              </div>
+              <div class="p-2 w-full">
+                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+              </div>
+              <div class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
+                <a class="text-indigo-500">foruseuse@gmail.com</a>
+                <p class="leading-normal my-3">49 Smith St.
+                  <br>Saint Cloud, MN 56301
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       </form>
     </div>
   </div>
@@ -98,5 +65,3 @@ document.location = "/Shop/contact";
 {%endif%}
 </script>
 {%endblock%}
-
-
