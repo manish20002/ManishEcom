@@ -70,12 +70,12 @@ def tracker(request):
                 updates = []
                 for item in update:
                     updates.append({'text': item.update_desc, 'time': item.timestamp})
-                    response = json.dumps(updates, default=str)
+                    response = json.dumps({"status":"success", "updates":updates, "itemsJson": order[0].items_json}, default=str)
                 return HttpResponse(response)
             else:
-                return HttpResponse('error')
+                return HttpResponse('{"status":"noitem"}')
         except Exception as e:
-            return HttpResponse('error')
+            return HttpResponse('{"status":"error"}')
 
     return render(request, 'shop/tracker.html')
     
@@ -90,8 +90,9 @@ def productView(request, myid):
 
 def checkout (request):
     if request.method == "POST":
-        items_json = request.POST.get('itemsjson', '')
+        items_json = request.POST.get('itemsJson', '')
         name = request.POST.get('name', '')
+        amount = request.POST.get('amount', '')
         email = request.POST.get('email', '')
         city = request.POST.get('city', '')
         zip_code = request.POST.get('zip_code', '')
@@ -99,7 +100,7 @@ def checkout (request):
         phone = request.POST.get('phone', '')
         state = request.POST.get('state', '')
 
-        order= Orders(items_Json=items_json, name=name, email=email, city=city, address=address, state=state, phone=phone, zip_code=zip_code)
+        order= Orders(items_json=items_json, name=name, email=email, city=city, address=address, state=state, phone=phone, zip_code=zip_code, amount=amount)
         order.save()
         update = OrderUpdate(order_id= order.order_id, update_desc="The Order has been placed")
         update.save()
@@ -107,6 +108,3 @@ def checkout (request):
         id = order.order_id
         return render(request, 'Shop/checkout.html', {'thank':thank, 'id':id})
     return render(request, 'Shop/checkout.html')
-
-
-
